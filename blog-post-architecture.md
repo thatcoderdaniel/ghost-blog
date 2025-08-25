@@ -2,7 +2,7 @@
 
 As a Technical Account Manager candidate, I recently migrated my Jekyll blog to Ghost CMS with enterprise-grade infrastructure on Google Cloud Platform. This post documents the complete architecture, design decisions, and lessons learned.
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ```
 Internet → Cloudflare DNS → Google Load Balancer → Cloud CDN → Ghost VM → Ghost CMS
@@ -15,7 +15,7 @@ Internet → Cloudflare DNS → Google Load Balancer → Cloud CDN → Ghost VM 
 - **Security**: SSL termination, firewall rules, security headers
 - **Scalability**: Ready to scale horizontally when traffic grows
 
-## 📊 Infrastructure Components
+## Infrastructure Components
 
 ### Core Services
 - **VM Instance**: `ghost-blog-vm` (e2-medium, 2 vCPU, 4GB RAM)
@@ -31,7 +31,7 @@ Internet → Cloudflare DNS → Google Load Balancer → Cloud CDN → Ghost VM 
 - **Cloud Domains**: SSL certificate management
 - **VPC Firewall**: Security rule enforcement
 
-## 🔧 Configuration Details
+## Configuration Details
 
 ### Ghost Configuration
 ```json
@@ -76,7 +76,7 @@ gcloud compute backend-services update ghost-backend-service \
     --global
 ```
 
-## 🚀 Performance Optimizations
+## Performance Optimizations
 
 ### CDN Configuration
 - **Default TTL**: 30 minutes (balances freshness vs. performance)
@@ -95,7 +95,7 @@ gcloud compute url-maps invalidate-cdn-cache ghost-url-map --path="/post-slug/"
 gcloud compute url-maps invalidate-cdn-cache ghost-url-map --path="/*"
 ```
 
-## 🛡️ Security Implementation
+## Security Implementation
 
 ### Network Security
 - **Firewall**: Only ports 80/443 exposed to internet
@@ -111,7 +111,7 @@ add_header X-XSS-Protection "1; mode=block" always;
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 ```
 
-## 💰 Cost Analysis
+## Cost Analysis
 
 Monthly costs (CAD):
 - **VM (e2-medium)**: ~$34
@@ -124,7 +124,7 @@ Monthly costs (CAD):
 - Could reduce to ~$34/month by removing load balancer for personal blog
 - Current setup optimized for demonstrating enterprise architecture skills
 
-## 📈 Migration Journey
+## Migration Journey
 
 ### From Jekyll to Ghost
 **Challenges encountered:**
@@ -139,7 +139,7 @@ Monthly costs (CAD):
 - Cache invalidation automation
 - Security-first configuration
 
-## 🔍 Monitoring & Troubleshooting
+## Monitoring & Troubleshooting
 
 ### Health Monitoring
 ```bash
@@ -159,7 +159,7 @@ sudo systemctl status nginx
 3. **Theme changes not loading**: Restart Ghost + full cache clear
 4. **Admin portal issues**: Check Ghost URL config + clear JS cache
 
-## 🎯 Future Enhancements
+## Future Enhancements
 
 ### Technical Roadmap
 - **True 3-tier architecture**: Migrate SQLite → Cloud SQL
@@ -174,7 +174,7 @@ This architecture supports my goal of becoming an AWS/Google Cloud TAM by demons
 - Cost vs. performance trade-offs
 - Security and compliance awareness
 
-## 📚 Key Takeaways
+## Key Takeaways
 
 1. **Over-engineering can be valuable** when it demonstrates skills for career goals
 2. **Cache management is critical** for dynamic content sites
@@ -185,14 +185,14 @@ The complete source code and documentation is available on [GitHub](https://gith
 
 ---
 
-**Tech Stack**: Ghost CMS • Google Cloud Platform • Nginx • Ubuntu • Cloudflare DNS • Let's Encrypt SSL
+**Tech Stack**: Ghost CMS, Google Cloud Platform, Nginx, Ubuntu, Cloudflare DNS, Let's Encrypt SSL
 
-*This architecture demonstrates enterprise-grade infrastructure patterns while maintaining cost efficiency for a personal technical blog.*
+This architecture demonstrates enterprise-grade infrastructure patterns while maintaining cost efficiency for a personal technical blog.
 
 ---
 
 **Ghost Publishing Instructions:**
-- **Title**: `Building a Production-Ready Ghost Blog on Google Cloud: Enterprise Architecture Deep Dive`
-- **Tags**: `architecture`, `cloud`, `ghost`, `gcp`, `infrastructure`, `tam`
+- **Title**: Building a Production-Ready Ghost Blog on Google Cloud: Enterprise Architecture Deep Dive
+- **Tags**: architecture, cloud, ghost, gcp, infrastructure, tam
 - **Feature Image**: Optional - consider a cloud architecture diagram
-- **Excerpt**: `Complete technical deep dive into building enterprise-grade Ghost blog infrastructure on Google Cloud Platform, including architecture decisions, security implementations, and cost analysis.`
+- **Excerpt**: Complete technical deep dive into building enterprise-grade Ghost blog infrastructure on Google Cloud Platform, including architecture decisions, security implementations, and cost analysis.
