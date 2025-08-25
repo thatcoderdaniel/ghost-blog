@@ -4,8 +4,8 @@ Production-ready Ghost blog with enterprise-grade infrastructure on Google Cloud
 
 **Live Site**: https://blog.itsdanmanole.com  
 **Admin Panel**: https://blog.itsdanmanole.com/ghost/  
-**Project**: `dmisblogging-prod`  
-**Region**: `northamerica-northeast1-a` (Montreal)
+**Project**: `your-project-id`  
+**Region**: `your-preferred-region` (e.g. Montreal)
 
 ---
 
@@ -34,13 +34,13 @@ Internet → Cloudflare DNS → Google Load Balancer → Cloud CDN → Ghost VM 
 - **Primary Domain**: `blog.itsdanmanole.com`
 - **Root Domain**: `itsdanmanole.com` (redirects to blog subdomain)
 - **SSL Certificate**: Covers both domains
-- **DNS**: A records point to Load Balancer IP `34.36.174.66`
+- **DNS**: A records point to Load Balancer IP `YOUR_LB_IP`
 
 ### VM Details
-- **Instance**: `ghost-blog-vm`
-- **Zone**: `northamerica-northeast1-a`
+- **Instance**: `your-vm-name`
+- **Zone**: `your-zone`
 - **Machine Type**: `e2-medium` (2 vCPU, 4GB RAM)
-- **Static IP**: `34.95.12.55`
+- **Static IP**: `YOUR_VM_IP`
 - **OS**: Ubuntu 24.04.3 LTS
 
 ### Ghost Configuration
@@ -67,7 +67,7 @@ Internet → Cloudflare DNS → Google Load Balancer → Cloud CDN → Ghost VM 
 
 ### SSH to VM
 ```bash
-gcloud compute ssh ghost-blog-vm --zone=northamerica-northeast1-a
+gcloud compute ssh your-vm-name --zone=your-zone
 ```
 
 ### Ghost Management
@@ -199,7 +199,7 @@ sudo systemctl status nginx
 - **HTTP Target Proxy**: `ghost-http-proxy`
 - **HTTPS Target Proxy**: `ghost-https-proxy`
 - **SSL Certificate**: `ghost-ssl-cert`
-- **Static IP**: `ghost-lb-ip` (`34.36.174.66`)
+- **Static IP**: `ghost-lb-ip` (`YOUR_LB_IP`)
 
 ### Firewall Rules
 ```bash

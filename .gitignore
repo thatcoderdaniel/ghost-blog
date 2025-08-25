@@ -1,0 +1,35 @@
+# Sensitive configuration files
+config.production.json
+config.development.json
+.env
+*.env
+
+# Ghost data
+content/
+ghost-local.db
+*.db
+
+# Node modules
+node_modules/
+npm-debug.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Backup files
+*.backup
+*.bak
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+
+# Logs
+*.log
+logs/
